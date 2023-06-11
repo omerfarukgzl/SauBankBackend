@@ -41,7 +41,12 @@ public class BankService {
 
         String decryptedData = backendBackendCommunication.getBackendToBackendEncryptedAndSignatureDataTransaction(encryptedPaymentRequest, signature, randomKey,SECRET_KEY_BACKEND);
 
-        BankRequest bankRequest = objectMapper.convertValue(decryptedData, BankRequest.class);
+        try {
+            BankRequest bankRequest = objectMapper.readValue(decryptedData, BankRequest.class);
+
+        }catch (Exception e){
+            throw new RuntimeException("Beklenmedik bir hata oluştu.");
+        }
 
 
 
