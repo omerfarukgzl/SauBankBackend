@@ -8,6 +8,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -38,11 +39,13 @@ public class User {
     @JsonProperty("date")
     private LocalDateTime creationDate;
 
-    @OneToMany(mappedBy = "userId",fetch = FetchType.EAGER, cascade = CascadeType.ALL) // ==> mappedBy="account" : account nesnesi Transaction nesnesindeki account nesnesine karşılık gelir.
+    private BigDecimal userBalance;
+
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL) // ==> mappedBy="account" : account nesnesi Transaction nesnesindeki account nesnesine karşılık gelir.
     private Set<Card> cards  = new HashSet<>() ;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="bank_id", nullable=false)// foreign key
-    private Bank bankId;
+    private Bank bank;
 
 }

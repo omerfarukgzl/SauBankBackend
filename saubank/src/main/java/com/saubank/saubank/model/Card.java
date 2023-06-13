@@ -26,6 +26,6 @@ public class Card {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="user_id", nullable=false)// foreign key
-    private User userId;
+    private User user;
 
 }

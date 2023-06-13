@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 
 @RestController()
 @RequestMapping("/v1/saubank")
@@ -31,6 +32,10 @@ public class BankController {
         String randomKey = request.getHeader("x-rnd-key");
         return ResponseEntity.ok( bankService.payment(encryptedPaymentRequest,signature,randomKey));
 
+    }
+    @GetMapping("/getBank")
+    public ResponseEntity<BigDecimal> getBank(){
+        return ResponseEntity.ok(bankService.getBank());
     }
 
 

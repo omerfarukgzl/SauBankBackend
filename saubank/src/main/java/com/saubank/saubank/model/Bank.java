@@ -22,7 +22,7 @@ public class Bank {
     private String bankName;
     private Integer bankCode;
 
-    @OneToMany(mappedBy = "bankId",fetch = FetchType.EAGER, cascade = CascadeType.ALL) // ==> mappedBy="account" : account nesnesi Transaction nesnesindeki account nesnesine karşılık gelir.
+    @OneToMany(mappedBy = "bank",fetch = FetchType.EAGER, cascade = CascadeType.ALL) // ==> mappedBy="account" : account nesnesi Transaction nesnesindeki account nesnesine karşılık gelir.
     private Set<User> users  = new HashSet<>() ;
 
 /*    @OneToMany(mappedBy = "bank",fetch = FetchType.EAGER, cascade = CascadeType.ALL) // ==> mappedBy="account" : account nesnesi Transaction nesnesindeki account nesnesine karşılık gelir.
