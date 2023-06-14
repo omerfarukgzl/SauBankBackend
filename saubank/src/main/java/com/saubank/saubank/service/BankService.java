@@ -7,6 +7,7 @@ import com.saubank.saubank.model.Card;
 import com.saubank.saubank.model.User;
 import com.saubank.saubank.request.BankRequest;
 import com.saubank.saubank.request.EncryptedPaymentRequest;
+import com.saubank.saubank.response.BankInfoResponse;
 import com.saubank.saubank.response.BankResponse;
 import com.saubank.saubank.respository.BankRepository;
 import com.saubank.saubank.utils.AndroidBackendCommuication;
@@ -70,12 +71,17 @@ public class BankService {
             return bankResponse;
 
         }catch (Exception e){
-            throw new RuntimeException("Beklenmedik bir hata oluştu.");
+            throw new RuntimeException("Beklenmedik bir hata oluştu." + e.getMessage());
         }
     }
 
-    public BigDecimal getBank(){
-        return userService.getUser("9aae5862-3601-4bcf-b5af-cae44e6cd705").getUserBalance();
+    public BankInfoResponse getBank(){
+        System.out.println("Banka bilgisi istendi");
+        BigDecimal bigDecimal= userService.getUser("9aae5862-3601-4bcf-b5af-cae44e6cd705").getUserBalance();
+        BankInfoResponse bankInfoResponse = new BankInfoResponse();
+        bankInfoResponse.setAmount(bigDecimal);
+        System.out.println("Banka bilgisi gönderildi" + bankInfoResponse.toString());
+        return bankInfoResponse;
     }
 
 

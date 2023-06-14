@@ -42,10 +42,10 @@ public class BackendBackendCommunication {
         }
     }
 
-    public String sendBackendToBackendEncryptedDataTransaction(String token,String secretKey)
+    public String sendBackendToBackendEncryptedDataTransaction(String data,String secretKey)
     {
         try {
-            String encryptedToken = encryptionUtil.encrypt(token, secretKey); // Encrypt token
+            String encryptedToken = encryptionUtil.encrypt(data, secretKey); // Encrypt token
             System.out.println("Encrypted Token-Backend: " + encryptedToken);
 
             return encryptedToken;

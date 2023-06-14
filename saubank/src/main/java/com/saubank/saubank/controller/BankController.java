@@ -3,6 +3,7 @@ package com.saubank.saubank.controller;
 
 import com.saubank.saubank.request.BankRequest;
 import com.saubank.saubank.request.EncryptedPaymentRequest;
+import com.saubank.saubank.response.BankInfoResponse;
 import com.saubank.saubank.response.BankResponse;
 import com.saubank.saubank.service.BankService;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class BankController {
 
     }
     @GetMapping("/getBank")
-    public ResponseEntity<BigDecimal> getBank(){
+    public ResponseEntity<BankInfoResponse> getBank(){
         return ResponseEntity.ok(bankService.getBank());
     }
 
